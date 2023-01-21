@@ -112,10 +112,9 @@
       const portfolioGrid = document.getElementById("portfolio-grid2")
       portfolioGrid.innerHTML = "";
       for (var i = 0; i < json.length; i++) {
-      portfolioGrid.innerHTML += `<div onclick="myFunction()" class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
-      <a class="item-wrap fancybox">
+      portfolioGrid.innerHTML += `<div  class="item web col-sm-6 col-md-4 col-lg-4 mb-4">
+      <a onclick="service(event)" id="`+json[i]['id']+`" class="item-wrap fancybox">
       <div class="work-info">
-      <h3 id="services">`+json[i]['id']+`</h3>
       <h3>`+json[i]['serviceType']+`</h3>
       </div>
       <img class="img-fluid" src="./assets/img/img_`+json[i]['id']+`.jpg">
@@ -132,13 +131,15 @@
    
     //
   });
-
  
-    
 })()
-function myFunction() {
-  // console.log("works");
-  var services = document.getElementsById("services").innerHTML;
-   // 
-   console.log(services);
- }
+
+function service(event){
+  if(event.target.id){
+    var currentElementId = event.target.id;
+    console.log(currentElementId);
+}
+else{
+    console.log("The clicked element does not have an id");
+}
+}
