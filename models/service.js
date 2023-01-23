@@ -3,7 +3,8 @@
 module.exports = (sequelize, DataTypes) => {
   
   const Service = sequelize.define('Service', {
-    serviceType: DataTypes.STRING
+    serviceType: DataTypes.STRING,
+    serviceDetails: DataTypes.STRING
   }, {
 //associations
   });

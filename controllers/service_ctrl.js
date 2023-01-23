@@ -22,7 +22,7 @@ self.get = async(req,res)=>{
         try{
             //let cleanerID =  query.params.cleanerID;
             let data = await Service.findOne({
-                attributes:["serviceType"],
+                attributes:["serviceType","serviceDetails"],
             where:{
                 id:req.query.id
             },
@@ -44,7 +44,7 @@ self.get = async(req,res)=>{
         try{
             //let cleanerID =  query.params.cleanerID;
             let data = await Service.findAll({
-                attributes:["serviceType","id"],
+                attributes:["serviceType","id","serviceDetails"],
             });
             return res.json({
                 status:"ok",
@@ -66,7 +66,7 @@ self.get = async(req,res)=>{
             //
             let data = await Service.update(body,{
                 where:{
-                    serviceID:req.query.serviceID,
+                    id:req.query.id,
                 }, 
             })
             return res.json({
@@ -86,7 +86,7 @@ self.get = async(req,res)=>{
           //  let nationalId = req.params.nationalId;
             let data = await Service.destroy({
                 where:{
-                    serviceID:req.query.serviceID,
+                    id:req.query.id,
                 }
             });
             return res.json({

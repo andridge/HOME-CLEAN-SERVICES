@@ -19,10 +19,10 @@ route.delete("/delete_schedule/:cleanerID", scheduleCtrl.delete);
 
 // Services
 route.post("/add_service", serviceCtrl.save);
-route.get("/get_service/:serviceID", serviceCtrl.get);
+route.get("/get_service/:id", serviceCtrl.get);
 route.get("/get_all_services", serviceCtrl.getAllServices);
-route.put("/update_service/:serviceID", serviceCtrl.updateService);
-route.delete("/delete_service/:serviceID", serviceCtrl.delete);
+route.put("/update_service/:id", serviceCtrl.updateService);
+route.delete("/delete_service/:id", serviceCtrl.delete);
 
 
 // Customers
@@ -57,9 +57,9 @@ route.delete("/delete_team/:teamID",teamCtrl.delete);
 
 // Service_details
 route.post("/add_service_details", service_detailsCtrl.save);
-route.get("/getservice_details/:serviceID", service_detailsCtrl.get);
-route.put("/update_service_details/:serviceID", service_detailsCtrl.updateService_details);
-route.delete("/delete_service_details/:serviceID",service_detailsCtrl.delete);
+route.get("/getservice_details/:id", service_detailsCtrl.get);
+route.put("/update_service_details/:id", service_detailsCtrl.updateService_details);
+route.delete("/delete_service_details/:id",service_detailsCtrl.delete);
 
 //requests
 route.post("/add_requests", requestsCtrl.save);

@@ -11,6 +11,9 @@ module.exports = {
       serviceType: {
         type: Sequelize.STRING
       },
+      serviceDetails: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -21,11 +21,11 @@ return res.json({
     ///
 self.get = async(req,res)=>{
         try{
-            //let serviceID =  query.params.serviceID;
+         //   let serviceID =  query.params.id;
             let data = await Service_details.findOne({
                 attributes:["serviceID","cleanerID","serviceTime","serviceDate","serviceType"],
             where:{
-                serviceID:req.query.serviceID
+                id:req.query.id
             },
             });
             return res.json({
@@ -42,12 +42,12 @@ self.get = async(req,res)=>{
     }
     self.updateService_details = async(req,res)=>{
         try{
-           // let nationalId = req.params.nationalId;
+           //let id = req.params.id;
             let body = req.body;
             //
             let data = await Service_details.update(body,{
                 where:{
-                    serviceID:req.query.serviceID,
+                    id:req.query.id,
                 }, 
             })
             return res.json({
@@ -64,10 +64,10 @@ self.get = async(req,res)=>{
     }
     self.delete = async(req,res)=>{
         try{
-          //  let nationalId = req.params.nationalId;
+          // let id = req.params.id;
             let data = await Service_details.destroy({
                 where:{
-                    serviceID:req.query.serviceID,
+                    id:req.query.id,
                 }
             });
             return res.json({

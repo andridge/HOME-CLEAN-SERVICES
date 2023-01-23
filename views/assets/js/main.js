@@ -1,4 +1,3 @@
-
 (function() {
   "use strict";
 
@@ -133,13 +132,26 @@
   });
  
 })()
-
 function service(event){
   if(event.target.id){
     var currentElementId = event.target.id;
     console.log(currentElementId);
+    axios.get('/api_v1/get_service/:?id='+currentElementId,{
+    })
+      .then(response => {
+        const data = JSON.stringify(response.data.data);
+        console.log(data);
+        localStorage.setItem('oneservice', data);
+        nextpage();
+      })
+      .catch(error => {
+        // handle the error
+      });
 }
 else{
     console.log("The clicked element does not have an id");
 }
 }
+ function nextpage(){
+       window.location.href = "/work-single";
+     }
