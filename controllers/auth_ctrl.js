@@ -21,7 +21,17 @@ exports.primaryprofile = function(req, res) {
         password:req.user.password
 });
 }
-
+exports.worksingle = function(req, res) {
+    
+    res.render('work-single', {userFirstName: req.user.userFirstName,
+        userLastName: req.user.userLastName,
+        userService: req.user.userService,
+        userPhone:req.user.userPhone,
+        userAddress:req.user.userAddress,
+        userEmail:req.user.userEmail,
+        password:req.user.password
+});
+}
 exports.logout = function(req, res) {
  
     req.session.destroy(function(err) {

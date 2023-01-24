@@ -6,7 +6,8 @@ module.exports = function(app, passport) {
  
     app.get('/', auth_ctrl.signin);
     app.get('/primaryProfile',isLoggedIn,auth_ctrl.primaryprofile);
-  //  app.get('/peoplePage',auth_ctrl.peoplepage);
+    app.get('/work-single',isLoggedIn,auth_ctrl.worksingle);
+    //  app.get('/peoplePage',auth_ctrl.peoplepage);
     app.get('/logout',auth_ctrl.logout);
  
     app.post('/signup', passport.authenticate('local-signup', {

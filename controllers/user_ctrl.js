@@ -47,7 +47,7 @@ self.get = async(req,res)=>{
             //
             let data = await User.update(body,{
                 where:{
-                    userID:req.query.userID,
+                    id:req.query.id,
                 }, 
             })
             return res.json({

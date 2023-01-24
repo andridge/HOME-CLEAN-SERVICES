@@ -23,9 +23,31 @@ self.get = async(req,res)=>{
         try{
             //let cleanerID =  query.params.cleanerID;
             let data = await Cleaner.findOne({
-                attributes:["cleanerFirstname","cleanerLastname","cleanerAddress","cleanerPhone","cleanerEmail"],
+                attributes:["cleanerFirstname","cleanerLastname","cleanerAddress","cleanerPhone","cleanerEmail","latitude","longitude"],
             where:{
-                cleanerID:req.query.cleanerID
+                id:req.query.id
+            },
+            });
+            return res.json({
+                status:"ok",
+                data:data,
+            });
+        }catch(error){
+            res.status(500).json({
+                status:"error",
+                data:error
+            })
+        }
+        
+    }
+    //
+    self.getCleaners = async(req,res)=>{
+        try{
+            //let cleanerID =  query.params.cleanerID;
+            let data = await Cleaner.findAll({
+                attributes:["cleanerFirstname","cleanerLastname","cleanerAddress","cleanerPhone","cleanerEmail","latitude","longitude"],
+            where:{
+                cleanerAddress:req.query.cleanerAddress
             },
             });
             return res.json({
@@ -47,7 +69,7 @@ self.get = async(req,res)=>{
             //
             let data = await Cleaner.update(body,{
                 where:{
-                    cleanerID:req.query.cleanerID,
+                    id:req.query.id,
                 }, 
             })
             return res.json({
@@ -67,7 +89,7 @@ self.get = async(req,res)=>{
           //  let nationalId = req.params.nationalId;
             let data = await Cleaner.destroy({
                 where:{
-                    cleanerID:req.query.cleanerID,
+                    id:req.query.id,
                 }
             });
             return res.json({

@@ -33,9 +33,10 @@ route.delete("/delete_customer/:customerID", customerCtrl.delete);
 
 // Cleaners
 route.post("/add_cleaner", cleanerCtrl.save);
-route.get("/get_cleaner/:cleanerID", cleanerCtrl.get);
-route.put("/update_cleaner/:cleanerID", cleanerCtrl.updateCleaner);
-route.delete("/delete_cleaner/:cleanerID", cleanerCtrl.delete);
+route.get("/get_cleaner/:id", cleanerCtrl.get);
+route.get("/get_cleaners/:cleanerAddress", cleanerCtrl.getCleaners);
+route.put("/update_cleaner/:id", cleanerCtrl.updateCleaner);
+route.delete("/delete_cleaner/:id", cleanerCtrl.delete);
 
 // Payments
 route.post("/add_payment", paymentCtrl.save);
@@ -69,9 +70,9 @@ route.delete("/delete_requests/:cleanerID",requestsCtrl.delete);
 
 //Users
 route.post("/add_user", userCtrl.save);
-route.get("/get_user/:userID", userCtrl.get);
-route.put("/update_user/:userID", userCtrl.updateUser);
-route.delete("/delete_user/:userID",userCtrl.delete);
+route.get("/get_user/:id", userCtrl.get);
+route.put("/update_user/:id", userCtrl.updateUser);
+route.delete("/delete_user/:id",userCtrl.delete);
 
 return route;
 }

@@ -90,19 +90,26 @@
             </div>
             <div class="col-md-3 ml-auto" data-aos="fade-up" data-aos-delay="100">
               <div class="sticky-content">
-            
+                <p class="mb-4"><span class="text-muted">Address</span></p>
+                <div class="mb-5">
+                  <p id="userAddress"><%-userAddress%></p>
+                </div>
                 <p class="mb-4"><span class="text-muted">Includes</span></p>
 
                 <div class="mb-5">
                   <p id="serviceDetails"></p>
                 </div>
-                <p><a href="#" class="readmore">See Available Cleaners</a></p>
+                <p><a onclick="cleaners()" class="readmore">See Available Cleaners</a></p>
               </div>
             </div>
           </div>
+
+          <div id="portfolio-grid3" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
+
+        </div>
         </div>
     </section>
-
+    
     <!-- ======= Testimonials Section ======= -->
     <section class="section pt-0">
       <div class="container">
@@ -167,6 +174,7 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/work_single.js"></script>
   
