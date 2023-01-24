@@ -42,7 +42,7 @@ function cleaners(){
       //  console.log(json)
       portfolioGrid.innerHTML = ``;
         json.forEach(function(element) {
-            portfolioGrid.innerHTML += ` <p  style=" border-radius: 25px;box-shadow: 5px 5px #888888;"onclick="payWall(event)" class="item web col-sm-6 col-md-4 col-lg-4 mb-4">`+element['cleanerFirstname']+ `<br>` +element['cleanerPhone']+`</p>`
+            portfolioGrid.innerHTML += ` <p  style=" border-radius: 25px;box-shadow: 5px 5px #888888;" onclick="payWall(event)" class="item web col-sm-6 col-md-4 col-lg-4 mb-4">`+element['cleanerFirstname']+ `<br> Hourly Rate Ksh`+element['cleanerHourly']+`</p>`
             //console.log(element.cleanerFirstname);
           });
        //
@@ -65,4 +65,5 @@ function cleaners(){
 
 function payWall(event){
     console.log("oOOOOK");
+    window.location.href = "/payWall"
 }

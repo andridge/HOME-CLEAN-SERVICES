@@ -23,6 +23,9 @@ module.exports = {
       cleanerEmail: {
         type: Sequelize.STRING
       },
+      cleanerHourly:{
+        type: Sequelize.DECIMAL(3)
+      },
       longitude:{
         type:Sequelize.DECIMAL(11,8)
       },

@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     cleanerAddress: DataTypes.STRING,
     cleanerPhone: DataTypes.STRING,
     cleanerEmail: DataTypes.STRING,
+    cleanerHourly:DataTypes.DECIMAL(3),
     latitude: DataTypes.DECIMAL(11,8),
     longitude: DataTypes.DECIMAL(11,8),
   }, {

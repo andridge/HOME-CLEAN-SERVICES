@@ -23,7 +23,7 @@ self.get = async(req,res)=>{
         try{
             //let cleanerID =  query.params.cleanerID;
             let data = await Cleaner.findOne({
-                attributes:["cleanerFirstname","cleanerLastname","cleanerAddress","cleanerPhone","cleanerEmail","latitude","longitude"],
+                attributes:["cleanerFirstname","cleanerLastname","cleanerAddress","cleanerHourly","cleanerPhone","cleanerEmail","latitude","longitude"],
             where:{
                 id:req.query.id
             },
@@ -45,7 +45,7 @@ self.get = async(req,res)=>{
         try{
             //let cleanerID =  query.params.cleanerID;
             let data = await Cleaner.findAll({
-                attributes:["cleanerFirstname","cleanerLastname","cleanerAddress","cleanerPhone","cleanerEmail","latitude","longitude"],
+                attributes:["cleanerFirstname","cleanerLastname","cleanerAddress","cleanerHourly","cleanerPhone","cleanerEmail","latitude","longitude"],
             where:{
                 cleanerAddress:req.query.cleanerAddress
             },
