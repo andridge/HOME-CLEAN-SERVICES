@@ -1,7 +1,7 @@
 (function (){
     "use strict";
 window.addEventListener('load',()=>{
-//
+//load Map
 
     var map = L.map('map').setView([-1.289677156299649, 36.81696336220971], 16);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -17,7 +17,7 @@ window.addEventListener('load',()=>{
 
     
 
-//
+//load services as per the database
     var service= localStorage.getItem("oneservice");
     var Service =JSON.parse(service);
     console.log(Service);
@@ -42,7 +42,7 @@ function cleaners(){
       //  console.log(json)
       portfolioGrid.innerHTML = ``;
         json.forEach(function(element) {
-            portfolioGrid.innerHTML += ` <p  style=" border-radius: 25px;box-shadow: 5px 5px #888888;" onclick="payWall(event)" class="item web col-sm-6 col-md-4 col-lg-4 mb-4">`+element['cleanerFirstname']+ `<br> Hourly Rate Ksh`+element['cleanerHourly']+`</p>`
+            portfolioGrid.innerHTML += ` <p id="`+element['id']+`"style=" box-shadow: 5px 5px #888888;" onclick="payWall(event)" class="item web col-sm-6 col-md-4 col-lg-4 mb-4">`+element['cleanerFirstname']+ `<br> Hourly Rate Ksh`+element['cleanerHourly']+`</p>`
             //console.log(element.cleanerFirstname);
           });
        //
@@ -64,6 +64,17 @@ function cleaners(){
 }   
 
 function payWall(event){
+  //
+
+  if(event.target.id){
+    var currentElementId = event.target.id;
+    console.log(currentElementId);
+    localStorage.setItem('onecleaner',currentElementId);
+  }else{
+    console.log("The clicked element does not have an id");
+   }
+  //
+
     console.log("oOOOOK");
     window.location.href = "/payWall"
 }

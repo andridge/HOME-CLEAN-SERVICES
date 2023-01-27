@@ -58,6 +58,11 @@ app.get('/work-single', (req, res) => {
   res.render('work-single');
   
   });
+  app.get('/payWall', (req, res) => {
+
+    res.render('payWall');
+    
+    });
 //app.use( express.static(path.join(__dirname, '/views')));
 
 app.use('/api_v1', routes(express));
