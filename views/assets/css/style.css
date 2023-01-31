@@ -269,6 +269,25 @@ h6,
 }
 
 /* Contact Form */
+.php-email-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.php-email-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.php-email-form .form-control {
+  background-color: #f2f2f2;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  height: auto;
+}
+
 .php-email-form .error-message {
   display: none;
   color: #fff;
@@ -276,9 +295,10 @@ h6,
   text-align: left;
   padding: 15px;
   font-weight: 600;
+  margin-top: 10px;
 }
 
-.php-email-form .error-message br+br {
+.php-email-form .error-message br + br {
   margin-top: 25px;
 }
 
@@ -289,6 +309,7 @@ h6,
   text-align: center;
   padding: 15px;
   font-weight: 600;
+  margin-top: 10px;
 }
 
 .php-email-form .loading {
@@ -296,6 +317,7 @@ h6,
   background: #fff;
   text-align: center;
   padding: 15px;
+  margin-top: 10px;
 }
 
 .php-email-form .loading:before {
@@ -330,6 +352,7 @@ h6,
     transform: rotate(360deg);
   }
 }
+
 
 /*--------------------------------------------------------------
 # Header

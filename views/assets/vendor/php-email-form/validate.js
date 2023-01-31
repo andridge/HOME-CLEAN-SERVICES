@@ -15,7 +15,7 @@
       let thisForm = this;
 
       let action = thisForm.getAttribute('action');
-      let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
+     // let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
       if( ! action ) {
         displayError(thisForm, 'The form action property is not set!')
@@ -27,11 +27,11 @@
 
       let formData = new FormData( thisForm );
 
-      if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
-          grecaptcha.ready(function() {
+     /* if ( recaptcha ) {
+        if(typeof recaptcha !== "undefined" ) {
+          recaptcha.ready(function() {
             try {
-              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
+              recaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
               .then(token => {
                 formData.set('recaptcha-response', token);
                 php_email_form_submit(thisForm, action, formData);
@@ -43,17 +43,19 @@
         } else {
           displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
         }
-      } else {
+      } else {*/
         php_email_form_submit(thisForm, action, formData);
-      }
+      //}
     });
   });
 
   function php_email_form_submit(thisForm, action, formData) {
-    fetch(action, {
+    /*fetch(action, {
       method: 'POST',
       body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
+      headers: {'X-Requested-With': 'XMLHttpRequest',
+      'Content-Type': 'multipart/form-data'
+    }
     })
     .then(response => {
       return response.text();
@@ -69,7 +71,30 @@
     })
     .catch((error) => {
       displayError(thisForm, error);
+    });*/
+    
+    formData.forEach((value, key) => {
+      console.log(key + ": " + value);
     });
+    //
+
+    axios.post(action,formData)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+    })
+    .then((response) => {
+      thisForm.querySelector('.loading').classList.remove('d-block');
+      if (response =='ok') {
+        thisForm.querySelector('.sent-message').classList.add('d-block');
+        thisForm.reset(); 
+      } else {
+        throw new Error(response ? response : 'Form submission failed and no error message returned from: ' + action); 
+      }
+    })
+    .catch((error) => {
+      displayError(thisForm, error);
+    });
+
   }
 
   function displayError(thisForm, error) {

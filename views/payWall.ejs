@@ -87,67 +87,78 @@
           </div>
 
         </div>
+        <div class="col-md-4 ml-auto order-2" data-aos="fade-up">
+          <ul class="list-unstyled">
+            <li class="mb-3">
+              <strong class="d-block mb-1">Address</strong>
+              <span id="cleanerAddress"></span>
+            </li>
+            <li class="mb-3">
+              <strong class="d-block mb-1">Phone</strong>
+              <span id="cleanerPhone"></span>
+            </li>
+            <li class="mb-3">
+              <strong class="d-block mb-1">Email</strong>
+              <span id="cleanerEmail"></span>
+            </li>
+            <li class="mb-3">
+                <strong class="d-block mb-1">Hourly Rate</strong>
+                <span id="cleanerHourly"></span>
+            </li>
+          </ul>
+        </div>
+<!--
 
+<form name="add_schedule" method="post" action="api_v1/add_schedule"  class="php-email-form">
+  <div class="row gy-3">
+    <div class="col-md-12 form-group">
+      <label for="date">Date</label>
+      <input type="date" class="form-control" name="date" required >
+    </div>
+    <div class="col-md-12 form-group">
+      <label for="startTime">Time</label>
+      <input type="time" class="form-control" name="startTime"  required>
+    </div>
+    <div class="col-md-12 form-group">
+      <label for="duration">Duration</label>
+      <input type="number" class="form-control" name="duration" required>
+    </div>
+
+    <div class="col-md-12 my-3">
+      <div class="loading">Loading</div>
+      <div class="error-message"></div>
+      <div class="sent-message">Your schedule has been booked. Thank you!</div>
+    </div>
+
+    <div class="col-md-6 mt-0 form-group">
+      <input type="submit" class="readmore d-block w-100" value="Set Schedule">
+    </div>
+  </div>
+</form>
+
+-->
         <div class="row">
           <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-
-              <div class="row gy-3">
-                
-                <div class="col-md-6 form-group">
-                  <label for="name"><b>Hour Rate</b></label>
-                  <p id="cleanerHourly"></p>
-                </div>
-                <div class="col-md-12 form-group">
-                  <label for="name">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject" required>
-                </div>
-                <div class="col-md-12 form-group">
-                  <label for="name">Message</label>
-                  <textarea class="form-control" name="message" cols="30" rows="10" required></textarea>
-                </div>
-
-                <div class="col-md-12 my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-
-                <div class="col-md-6 mt-0 form-group">
-                  <input type="submit" class="readmore d-block w-100" value="Send Message">
-                </div>
-              </div>
-
-            </form>
-
+           
+            <form onsubmit="schedule(event)" id="php-email-form" class="php-email-form" >  
+              <label for="fname">Date:</label><br>
+              <input  type="date" id="date" name="date"value=""  ><br>
+              <label for="time">Start Time:</label><br>
+              <input  type="time" id="startTime" name="startTime" value="" ><br><br>
+              <label for="duration">Duration:</label><br>
+              <input   type="number" id="duration" name="duration" value="" ><br><br>
+              <div class="col-md-12 my-3">
+              <div class="loading">Loading</div><br><br>
+              <div class="error-message"></div>
+              <div class="sent-message">Your schedule has been booked. Thank you!</div><br><br>
+           </div>
+              <input type="submit" value="Set Schedule">
+            </form> 
           </div>
-
-          <div class="col-md-4 ml-auto order-2" data-aos="fade-up">
-            <ul class="list-unstyled">
-              <li class="mb-3">
-                <strong class="d-block mb-1">Address</strong>
-                <span id="cleanerAddress"></span>
-              </li>
-              <li class="mb-3">
-                <strong class="d-block mb-1">Phone</strong>
-                <span id="cleanerPhone"></span>
-              </li>
-              <li class="mb-3">
-                <strong class="d-block mb-1">Email</strong>
-                <span id="cleanerEmail"></span>
-              </li>
-            </ul>
-          </div>
-
         </div>
-
       </div>
-
     </section>
-
   </main><!-- End #main -->
-
   <!-- ======= Footer ======= -->
   <footer class="footer" role="contentinfo">
     <div class="container">
@@ -181,8 +192,8 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
+ <!-- <script src="assets/vendor/php-email-form/validate.js"></script>
+-->
   <!-- Template Main JS File -->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
   <script src="assets/js/main.js"></script>
