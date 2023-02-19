@@ -43,6 +43,7 @@ exports.paywall = function(req, res) {
         password:req.user.password
 });
 }
+
 exports.logout = function(req, res) {
  
     req.session.destroy(function(err) {

@@ -18,6 +18,27 @@ return res.json({
         })
     }
     }
+    self.getAllSchedules = async(req,res)=>{
+        try{
+            //let cleanerID =  query.params.cleanerID;
+            let data = await Schedule.findAll({
+                attributes:["id","startTime","endTime","cleanerID","duration","date","customerID","status","action","paymentType","paymentAmount","paymentDate"],
+                where:{
+                    action:0
+                },
+            });
+            return res.json({
+                status:"ok",
+                data:data,
+            });
+        }catch(error){
+            res.status(500).json({
+                status:"error",
+                data:error
+            })
+        }
+        
+    }
 self.get = async(req,res)=>{
         try{
             //let cleanerID =  query.params.cleanerID;

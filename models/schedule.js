@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
     endTime: DataTypes.TIME,
     duration: DataTypes.STRING,
     date: DataTypes.DATE,
-    customerID: DataTypes.STRING
+    customerID: DataTypes.STRING,
+    status:DataTypes.STRING,
+    action:DataTypes.BOOLEAN,
+    paymentType:DataTypes.STRING,
+    paymentAmount:DataTypes.DECIMAL,
+    paymentDate:DataTypes.DATE
   }, {
     //associtions
   });

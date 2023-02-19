@@ -1,12 +1,12 @@
 
-const{Customer} =  require("./../models");
+const{Admin} =  require("../models");
 let self ={};
 self.save = async(req,res)=>{
 //
 try{
 //
 let body = req.body;
-let data = Customer.create(body);
+let data = Admin.create(body);
 return res.json({
             status:"ok",
             data:data
@@ -22,10 +22,10 @@ return res.json({
 self.get = async(req,res)=>{
         try{
             //let cleanerID =  query.params.cleanerID;
-            let data = await Customer.findOne({
-                attributes:["customerFirstname","customerLastname","customerAddress","customerPhone","customerEmail"],
+            let data = await Admin.findOne({
+                attributes:["adminFirstname","adminLastname","adminAddress","adminPhone","adminEmail"],
             where:{
-                customerID:req.query.customerID
+                id:req.query.id
             },
             });
             return res.json({
@@ -40,14 +40,14 @@ self.get = async(req,res)=>{
         }
         
     }
-    self.updateCustomer = async(req,res)=>{
+    self.updateAdmin = async(req,res)=>{
         try{
            // let nationalId = req.params.nationalId;
             let body = req.body;
             //
-            let data = await Customer.update(body,{
+            let data = await Admin.update(body,{
                 where:{
-                    customerID:req.query.customerID,
+                    id:req.query.id,
                 }, 
             })
             return res.json({
@@ -65,9 +65,9 @@ self.get = async(req,res)=>{
     self.delete = async(req,res)=>{
         try{
           //  let nationalId = req.params.nationalId;
-            let data = await Customer.destroy({
+            let data = await Admin.destroy({
                 where:{
-                    customerID:req.query.customerID,
+                    id:req.query.id,
                 }
             });
             return res.json({

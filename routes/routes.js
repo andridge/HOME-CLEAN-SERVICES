@@ -1,6 +1,6 @@
 const scheduleCtrl = require("./../controllers/schedule_ctrl");
 const serviceCtrl = require("./../controllers/service_ctrl");
-const customerCtrl = require("./../controllers/customer_ctrl");
+const adminCtrl = require("../controllers/admin_ctrl");
 const cleanerCtrl = require("./../controllers/cleaner_ctrl");
 const paymentCtrl = require("./../controllers/payment_ctrl");
 const inventoryCtrl = require("./../controllers/inventory_ctrl");
@@ -14,6 +14,7 @@ module.exports = function(express){
 // Schedules
 route.post("/add_schedule", scheduleCtrl.save);
 route.get("/get_schedule/:cleanerID", scheduleCtrl.get);
+route.get("/get_all_schedules/", scheduleCtrl.getAllSchedules);
 route.put("/update_schedule/:cleanerID", scheduleCtrl.updateSchedule);
 route.delete("/delete_schedule/:cleanerID", scheduleCtrl.delete);
 
@@ -25,11 +26,11 @@ route.put("/update_service/:id", serviceCtrl.updateService);
 route.delete("/delete_service/:id", serviceCtrl.delete);
 
 
-// Customers
-route.post("/add_customer", customerCtrl.save);
-route.get("/get_customer/:customerID", customerCtrl.get);
-route.put("/update_customer/:customerID", customerCtrl.updateCustomer);
-route.delete("/delete_customer/:customerID", customerCtrl.delete);
+// Admins
+route.post("/add_admin", adminCtrl.save);
+route.get("/get_admin/:id",adminCtrl.get);
+route.put("/update_admin/:id", adminCtrl.updateAdmin);
+route.delete("/delete_admin/:id",adminCtrl.delete);
 
 // Cleaners
 route.post("/add_cleaner", cleanerCtrl.save);

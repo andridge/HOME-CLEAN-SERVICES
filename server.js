@@ -33,15 +33,12 @@ app.use(bodyParser.urlencoded({
 var authRoute = require('./routes/auth_routes')(app,passport);
 //load passport strategies
 require('./passport/passport.js')(passport,models.User)
-
 //
 // For Passport
-
 //
 db.sequelize.sync({force:false});
 // Mount the routes at the root path of the app
   // Pass the express object to the routes function
-
   // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -63,6 +60,7 @@ app.get('/work-single', (req, res) => {
     res.render('payWall');
     
     });
+    
 //app.use( express.static(path.join(__dirname, '/views')));
 
 app.use('/api_v1', routes(express));

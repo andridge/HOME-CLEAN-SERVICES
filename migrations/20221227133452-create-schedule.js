@@ -26,6 +26,21 @@ module.exports = {
       customerID: {
         type: Sequelize.STRING
       },
+      status:{
+        type:Sequelize.STRING
+      },
+      action:{
+        type:Sequelize.BOOLEAN
+      },
+      paymentType:{ 
+        type:Sequelize.STRING
+      },
+      paymentAmount:{ 
+        type:Sequelize.DECIMAL
+      },
+      paymentDate:{
+        type:Sequelize.DATE
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -1,13 +1,12 @@
 var bCrypt = require('bcrypt-nodejs');
 const LocalStrategy = require('passport-local').Strategy;
-module.exports = function(passport, user) {
+module.exports = function(passport, user,admin) {
 //const { generateKeyPair } = require('crypto');
 //const { Buffer } = require('buffer');   
+var LocalStrategy = require('passport-local').Strategy;
     var User = user;
-
+ 
     //
-    //
-    var LocalStrategy = require('passport-local').Strategy;
     passport.use('local-signup', new LocalStrategy(
         {
  
@@ -42,33 +41,7 @@ module.exports = function(passport, user) {
                 } else
  
                 {
-                    //
-                    //
-                    //
-                /*   // Generate RSA keys
-                   var publicKey2;
-                   var privateKey2;
-                    generateKeyPair('rsa', {
-                        modulusLength: 512,
-                        publicKeyEncoding: {
-                        type: 'spki',
-                        format: 'pem'
-                        },
-                        privateKeyEncoding: {
-                        type: 'pkcs8',
-                        format: 'pem'
-                        }
-                    }, (err, publicKey, privateKey) => {
-                        // Set global variables
-                        const publicKeyBase64 = Buffer.from(publicKey).toString('base64');
-                        const privateKeyBase64 = Buffer.from(privateKey).toString('base64');
-                       // global.publicKey = publicKeyBase64;
-                        //global.privateKey = privateKeyBase64;
-                        publicKey2=publicKeyBase64;
-                        privateKey2=privateKeyBase64;
-                        //console.log(publicKey2); // Outputs the public key in PEM format
-                        //console.log(privateKey2); // Outputs the private key in PEM format
-                    */
+                   
                        var userPassword = generateHash(password);
                        var data =
                            {
@@ -94,6 +67,8 @@ module.exports = function(passport, user) {
         }
  
     ));
+
+
     //LOCAL SIGNIN
 passport.use('local-signin', new LocalStrategy(
     {
@@ -160,6 +135,7 @@ passport.use('local-signin', new LocalStrategy(
     }
  
 ));
+
     //serialize
 passport.serializeUser(function(user, done) {
  

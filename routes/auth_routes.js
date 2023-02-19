@@ -18,6 +18,11 @@ module.exports = function(app, passport) {
         }
  
     ));
+
+   
+
+
+
     app.post('/signin', passport.authenticate('local-signin', {
         successRedirect: '/primaryProfile',
  
@@ -26,7 +31,14 @@ module.exports = function(app, passport) {
     
  
 ));
+app.post('/signinAdmin', passport.authenticate('admin-signin', {
+    successRedirect: '/admin',
 
+    failureRedirect: '/'
+}
+
+
+));
     function isLoggedIn(req, res, next) {
  
         if (req.isAuthenticated())

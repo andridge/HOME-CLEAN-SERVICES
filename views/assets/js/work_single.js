@@ -1,21 +1,51 @@
 (function (){
     "use strict";
 window.addEventListener('load',()=>{
+//GET USERS LOCATION & GENERAL LOCATION
+/*if (navigator.geolocation) {
+  console.log("Geolocation is supported!");
+  navigator.geolocation.getCurrentPosition(function(position) {
+
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    const altitude = position.coords.altitude;
+    const accuracy = position.coords.accuracy;
+    const altitudeAccuracy = position.coords.altitudeAccuracy;
+    const heading = position.coords.height;
+    const speed = position.coords.speed;
+    const timestamp = position.timestamp;
+  console.log(latitude,longitude);
+    // work with this information however you'd like!
+   
+  });
+} else {
+  console.log("Geolocation is not supported for this Browser/OS version yet.");
+}*/
+
 //load Map
 
-    var map = L.map('map').setView([-1.289677156299649, 36.81696336220971], 16);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    //add location data from users location
-    
-    L.marker([-1.289677156299649, 36.81696336220971],{
+var map = L.map('map').setView([0, 0], 13);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+map.locate({setView: true, maxZoom: 16});
+
+function onLocationFound(e) {
+    L.marker(e.latlng, {
         elevation: 200.0,
     }).addTo(map)
         .bindPopup(`I Need Services Here`)
         .openPopup();
+}
 
-    
+function onLocationError(e) {
+    console.log(e.message);
+}
+
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
 
 //load services as per the database
     var service= localStorage.getItem("oneservice");
